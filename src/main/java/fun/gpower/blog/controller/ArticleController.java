@@ -19,9 +19,43 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
+    /**
+     * 首页的文章
+     * @param pageParams
+     * @return
+     */
     @PostMapping
-    public Result articles(@RequestBody(required = false) PageParams pageParams){
+    public Result articles(@RequestBody(required = false) PageParams pageParams) {
         List<ArticleVo> articleVoList = articleService.listArticlesPage(pageParams);
         return Result.success(articleVoList);
+    }
+
+    /**
+     * 首页 最热文章
+     * @return
+     */
+    @PostMapping("/hot")
+    public Result hotArticle() {
+        int limit = 5;
+        return articleService.hotArticle(limit);
+    }
+
+    /**
+     * 首页 最新文章
+     * @return
+     */
+    @PostMapping("new")
+    public Result newArticles(){
+        int limit = 5;
+        return articleService.newArticles(limit);
+    }
+
+    /**
+     * 文章归档
+     * @return
+     */
+    @PostMapping("listArchives")
+    public Result listArchives(){
+        return articleService.listArchives();
     }
 }
