@@ -14,11 +14,11 @@ public class ArticleVo {
 
     private String summary;
 
-    private int commentCounts;
+    private Integer commentCounts;
 
-    private int viewCounts;
+    private Integer viewCounts;
 
-    private int weight;
+    private Integer weight;
     /**
      * 创建时间
      */
@@ -26,10 +26,10 @@ public class ArticleVo {
 
     private String author;
 
-    // private ArticleBodyVo body;
+    private ArticleBodyVo body;
 
     private List<TagVo> tags;
 
-    // private List<CategoryVo> categorys;
+    private CategoryVo categorys;
 
 }

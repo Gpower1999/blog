@@ -12,8 +12,11 @@ public class Result {
      * 统一返回值
      */
     private Integer code;
-    private boolean flag;
+
+    private boolean success;
+
     private String msg;
+
     private Object data;
 
     public static Result success(Object data) {

@@ -5,10 +5,7 @@ import fun.gpower.blog.vo.ArticleVo;
 import fun.gpower.blog.vo.Result;
 import fun.gpower.blog.vo.params.PageParams;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,7 +41,7 @@ public class ArticleController {
      * 首页 最新文章
      * @return
      */
-    @PostMapping("new")
+    @PostMapping("/new")
     public Result newArticles(){
         int limit = 5;
         return articleService.newArticles(limit);
@@ -54,8 +51,20 @@ public class ArticleController {
      * 文章归档
      * @return
      */
-    @PostMapping("listArchives")
+    @PostMapping("/listArchives")
     public Result listArchives(){
         return articleService.listArchives();
+    }
+
+    /**
+     * 查看文章详情
+     * @param id
+     * @return
+     */
+    @PostMapping("/view/{id}")
+    public Result findArticleById(@PathVariable("id") Long id){
+
+        ArticleVo articleVo = articleService.findArticleById(id);
+        return Result.success(articleVo);
     }
 }
